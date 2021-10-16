@@ -1,0 +1,57 @@
+<div class="container">
+  <div class="row">
+    <div class="col-lg-6 offset-lg-3">
+      <div class="card-text-center">
+        <div class="card-body text-muted">
+          <h2>Inicio de Sesion</h2>
+          <div class="col-8 mt-4">
+            <form [formGroup]="loginFormulario" (ngSubmit)="enviar()">
+              <div class="col-auto mb-3">
+                <label for="username" class="form-label text-bold"
+                  >Username</label
+                >
+                <div class="input-group">
+                  <div class="input-group-text">
+                    <img src="/assets/svg/user.svg" />
+                  </div>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="username"
+                    placeholder="Ingrese el nombre de usuario"
+                    formControlName="username"
+                  />
+                </div>
+              </div>
+
+              <div class="col-auto mb-3">
+                <label for="password" class="form-label">Contraseña</label>
+                <div class="input-group">
+                  <div class="input-group-text">
+                    <img src="/assets/svg/pass.svg" />
+                  </div>
+                  <input
+                    type="password"
+                    class="form-control"
+                    id="password"
+                    placeholder=""
+                    formControlName="password"
+                  />
+                </div>
+              </div>
+
+              <div class="mb-3 d-grid gap-2 col-4 mx-auto">
+                <button
+                  [disabled]="!loginFormulario.valid"
+                  class="btn btn-success btn-lg mt-3"
+                >
+                  Login
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
