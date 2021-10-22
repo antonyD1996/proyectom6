@@ -1,0 +1,45 @@
+<div class="container">
+  <div class="row">
+    <div class="py-4 d-flex justify-content-between">
+      <button (click)="redirect()" class="btn btn-white btn-nuevo">
+        <span class="icono">
+          <i class="fas fa-plus"></i>
+          Nuevo
+        </span>
+      </button>
+    </div>
+  </div>
+  <div class="row justify-content-center">
+    <div class="col">
+      <table class="table table-striped">
+        <thead class="thead-dark">
+          <tr>
+            <th *ngFor="let header of headers" scope="col">{{ header }}</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let comercio of comercios; let i = index">
+            <th scope="row">{{ i + 1 }}</th>
+            <td>{{ comercio.nombre }}</td>
+            <td>{{ comercio.nombrePropietario }}</td>
+            <td>{{ comercio.telefono }}</td>
+            <td>{{ comercio.categoria }}</td>
+            <td>{{ comercio.direccion }}</td>
+            <td>
+              <a class="btn-sm" (click)="editar(comercio._id)">
+                <span class="icono-primary">
+                  <i class="fas fa-pen"></i>
+                </span>
+              </a>
+              <a class="btn-sm" (click)="eliminar(comercio._id)">
+                <span class="icono-primary">
+                  <i class="fas fa-trash"></i>
+                </span>
+              </a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

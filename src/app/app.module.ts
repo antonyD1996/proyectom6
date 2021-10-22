@@ -3,24 +3,24 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { LoginComponent } from './auth/login/login.component';
-import { RegisterComponent } from './auth/register/register.component';
 import { AuthModule } from './auth/auth.module';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { NavbarComponent } from './navbar/navbar.component';
+import { CommonModule } from '@angular/common';
+
 
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent,
-    RegisterComponent
+    NavbarComponent
   ],
   imports: [
+
 
     BrowserModule,
     AppRoutingModule,
     AuthModule,
-    FormsModule,
-    ReactiveFormsModule
+    CommonModule
+
   ],
   providers: [],
   bootstrap: [AppComponent]

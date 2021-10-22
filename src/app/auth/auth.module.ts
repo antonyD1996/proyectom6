@@ -4,12 +4,16 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { IndexComponent } from './index/index.component';
 import { AuthRoutingModule } from './auth-routing.module';
+import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
 
 
 
 @NgModule({
   declarations: [
-    IndexComponent
+    IndexComponent,
+    LoginComponent,
+    RegisterComponent
   ],
   imports: [
     AuthRoutingModule,

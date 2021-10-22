@@ -1,0 +1,135 @@
+<div class="container">
+  <div class="row">
+    <div class="col-lg">
+      <div class="card-text-center">
+        <div class="card-body text-muted">
+          <h2>{{ accion }} Comercio</h2>
+          <div class="col mt-4">
+            <form [formGroup]="comercioForm" (ngSubmit)="enviar()">
+              <div class="row">
+                <div class="col">
+                  <div class="col-auto mb-3">
+                    <label for="nombre" class="form-label text-bold"
+                      >Nombre</label
+                    >
+                    <div class="input-group">
+                      <div class="input-group-text">
+                        <img src="/assets/svg/file-text.svg" />
+                      </div>
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="nombre"
+                        placeholder="Nombre del comercio"
+                        formControlName="nombre"
+                      />
+                    </div>
+                  </div>
+
+                  <div class="col-auto mb-3">
+                    <label for="nombrePropietario" class="form-label text-bold"
+                      >Propietario</label
+                    >
+                    <div class="input-group">
+                      <div class="input-group-text">
+                        <img src="/assets/svg/file-text.svg" />
+                      </div>
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="propietario"
+                        placeholder="Nombre del propietario"
+                        formControlName="nombrePropietario"
+                      />
+                    </div>
+                  </div>
+
+                  <div class="col-auto mb-3">
+                    <label for="telefono" class="form-label">Telefono</label>
+                    <div class="input-group">
+                      <div class="input-group-text">
+                        <img src="/assets/svg/telephone.svg" />
+                      </div>
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="telefono"
+                        placeholder="Numero telefonico"
+                        formControlName="telefono"
+                      />
+                    </div>
+                  </div>
+                  <div class="col-auto mb-3">
+                    <label for="descripcion" class="form-label"
+                      >Descripcion</label
+                    >
+                    <div class="input-group">
+                      <div class="input-group-text">
+                        <img src="/assets/svg/telephone.svg" />
+                      </div>
+                      <textarea
+                        class="form-control"
+                        id="descripcion"
+                        placeholder="Descripcion"
+                        formControlName="descripcion"
+                      ></textarea>
+                    </div>
+                  </div>
+
+                  <div class="col-auto mb-3 col-8">
+                    <label for="categoria" class="form-label">Categoria</label>
+                    <div class="input-group">
+                      <div class="input-group-text">
+                        <img src="/assets/svg/telephone.svg" />
+                      </div>
+                      <select
+                        class="form-select"
+                        aria-label="Default select example"
+                        formControlName="categoria"
+                      >
+                        <option
+                          *ngFor="let cat of categorias"
+                          value="{{ cat.id }}"
+                        >
+                          {{ cat.nombre }}
+                        </option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col">
+                  <div class="col-auto mb-3">
+                    <label for="direccion" class="form-label">Direccion</label>
+                    <div class="input-group">
+                      <div class="input-group-text">
+                        <img src="/assets/svg/geo-alt.svg" />
+                      </div>
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="direccion"
+                        placeholder="Direccion del restaurante"
+                        formControlName="direccion"
+                      />
+                    </div>
+                  </div>
+                  <div id="contenedormapa"></div>
+                </div>
+              </div>
+
+              <div class="mb-3 d-grid gap-2 col-4 mx-auto">
+                <button
+                  [disabled]="!comercioForm.valid"
+                  class="btn btn-orange btn-lg mt-3"
+                >
+                  Guardar
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

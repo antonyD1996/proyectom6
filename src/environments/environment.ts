@@ -4,7 +4,9 @@
 
 export const environment = {
   production: false,
-  URL_BASE: "http://localhost:3000/"
+  URL_BASE: "http://localhost:3001/",
+  tokenmapa: 'pk.eyJ1Ijoiamd1YXJkYWRvIiwiYSI6ImNrdWFpZWpnaDBoMG0ydm5ucTJnb2d0YjgifQ.e-e6NrNZPzJYFJ9zZT5sLA'
+
 };
 
 /*
