@@ -7,6 +7,8 @@ import { AuthModule } from './auth/auth.module';
 import { NavbarComponent } from './navbar/navbar.component';
 import { CommonModule } from '@angular/common';
 
+import { AngularToastifyModule, ToastService } from 'angular-toastify';
+
 
 @NgModule({
   declarations: [
@@ -19,10 +21,10 @@ import { CommonModule } from '@angular/common';
     BrowserModule,
     AppRoutingModule,
     AuthModule,
-    CommonModule
-
+    CommonModule,
+    AngularToastifyModule
   ],
-  providers: [],
+  providers: [ToastService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

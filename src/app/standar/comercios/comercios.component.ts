@@ -34,7 +34,6 @@ export class ComerciosComponent implements OnInit {
       res.subscribe(res => {
         this.comercio = res[1]
         res.forEach(comercio => {
-          console.log(comercio)
           this.marcador(comercio)
         })
       })
@@ -90,7 +89,6 @@ export class ComerciosComponent implements OnInit {
       .addTo(this.mapa);
 
     marca.on('dragend', () => {
-      console.log(marca.getLngLat())
     });
   }
 

@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  URL_BASE: "http://localhost:3001/",
+  URL_BASE: "https://api-comercios.herokuapp.com",
   tokenmapa: 'pk.eyJ1Ijoiamd1YXJkYWRvIiwiYSI6ImNrdWFpZWpnaDBoMG0ydm5ucTJnb2d0YjgifQ.e-e6NrNZPzJYFJ9zZT5sLA'
 
 };

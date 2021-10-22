@@ -35,16 +35,17 @@ export class ComercioService {
     return comercios
   }
 
-  async guardarComercios(comercio: FormGroup): Promise<Observable<any>> {
+  async guardarComercios(comercio: FormGroup): Promise<Observable<Comercio>> {
     const id = comercio['_id']
 
     return id ?
-      await this.http.put(this.url + 'comercios/' + id, comercio, { headers: this.headers_object }) :
-      await this.http.post(this.url + 'comercios', comercio, { headers: this.headers_object })
+      await this.http.put<Comercio>(this.url + 'comercios/' + id, comercio, { headers: this.headers_object }) :
+      await this.http.post<Comercio>(this.url + 'comercios', comercio, { headers: this.headers_object })
   }
 
-  async eliminarComercio(comercio: FormGroup): Promise<Observable<any>> {
-    const res = await this.http.post(this.url + 'comercios', comercio, { headers: this.headers_object })
+  async eliminarComercio(id: String): Promise<Observable<any>> {
+    const res = await this.http.delete(this.url + 'comercios/' + id, { headers: this.headers_object })
+
     return res
   }
 

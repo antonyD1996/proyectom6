@@ -7,6 +7,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import * as Mapboxgl from 'mapbox-gl';
 import { Categoria } from './../../models/categoria';
 import { ComercioService } from 'src/app/services/comercio.service';
+import { ToastService } from 'angular-toastify';
 
 @Component({
   selector: 'app-agregar',
@@ -26,21 +27,12 @@ export class AgregarComponent implements OnInit {
     { id: 3, nombre: 'Belleza' }]
 
 
-  constructor(private http: HttpClient, private activedRoute: ActivatedRoute, private router: Router, private comercioService: ComercioService) { }
+  constructor(private _toastService: ToastService, private activedRoute: ActivatedRoute, private router: Router, private comercioService: ComercioService) { }
 
   ngOnInit(): void {
 
 
     (Mapboxgl as any).accessToken = environment.tokenmapa;
-    this.mapa = new Mapboxgl.Map({
-      container: 'contenedormapa',
-      style: 'mapbox://styles/mapbox/streets-v11',
-      center: [-88.94, 14.04],
-      zoom: 10.6
-    });
-
-
-
 
     this.activedRoute.params.subscribe(param => {
       this.idComercio = param['id']
@@ -62,7 +54,12 @@ export class AgregarComponent implements OnInit {
         res => res.subscribe(
           comer => {
             this.comercio = comer
-            console.log(this.comercio)
+            this.mapa = new Mapboxgl.Map({
+              container: 'contenedormapa',
+              style: 'mapbox://styles/mapbox/streets-v11',
+              center: [this.comercio.longitud, this.comercio.latitud],
+              zoom: 10.6
+            });
 
             this.marcador(this.comercio.longitud, this.comercio.latitud)
             this.comercioForm = new FormGroup({
@@ -81,6 +78,12 @@ export class AgregarComponent implements OnInit {
         )
       )
     } else {
+      this.mapa = new Mapboxgl.Map({
+        container: 'contenedormapa',
+        style: 'mapbox://styles/mapbox/streets-v11',
+        center: [-88.94, 14.04],
+        zoom: 10.6
+      });
       this.marcador(-88.94, 14.04)
     }
   }
@@ -88,7 +91,9 @@ export class AgregarComponent implements OnInit {
   enviar(): void {
     this.comercioService.guardarComercios(this.comercioForm.value).then(res => {
       res.subscribe(resp => {
-        console.log(resp)
+        if (resp._id) {
+          this._toastService.success("Comercio guardado")
+        }
       })
     })
   }
@@ -110,7 +115,6 @@ export class AgregarComponent implements OnInit {
         'longitud': coordenadas.lng,
         'latitud': coordenadas.lat,
       })
-      console.log(this.comercioForm.value)
     });
   }
 
